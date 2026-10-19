@@ -1,6 +1,6 @@
 cask "grasslands" do
-  version "0.1.1"
-  sha256 "af490ae45cabb4df4e692d76b2680d7f2a465a91899507472148afd7a237542d"
+  version "0.1.2"
+  sha256 "298d7b38f7dde32551d530474abc62287774afe44afb5276ca15f231ff619af3"
 
   url "https://github.com/lklyne/grasslands/releases/download/v#{version}/grasslands-#{version}-arm64.zip"
   name "grasslands"
@@ -12,8 +12,10 @@ cask "grasslands" do
     strategy :github_releases
   end
 
+  # Sparkle updates the app in place (docs/decisions/0024-updates.md), so
+  # `brew upgrade` leaves it alone unless asked with --greedy.
+  auto_updates true
   depends_on arch: :arm64
-  depends_on formula: "herdr"
   depends_on macos: :ventura
 
   app "grasslands.app"
@@ -26,7 +28,9 @@ cask "grasslands" do
   ]
 
   caveats <<~EOS
-    grasslands needs herdr 0.9.5. It attaches to herdr's terminals with
-    --takeover, so a herdr TUI attached to the same panes loses them.
+    grasslands runs on herdr 0.9.5 or newer. Open grasslands to finish
+    setup: it uses the herdr on your PATH, and offers to install or update
+    it (through Homebrew, mise or herdr's installer) when it's missing or
+    old.
   EOS
 end
