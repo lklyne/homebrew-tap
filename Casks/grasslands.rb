@@ -1,6 +1,6 @@
 cask "grasslands" do
-  version "0.1.0"
-  sha256 "7fa6caa80d7cd4ddd8e3cd29e32bd6c6a466abaf23ba62d0c7ecfc9d7c642537"
+  version "0.1.1"
+  sha256 "af490ae45cabb4df4e692d76b2680d7f2a465a91899507472148afd7a237542d"
 
   url "https://github.com/lklyne/grasslands/releases/download/v#{version}/grasslands-#{version}-arm64.zip"
   name "grasslands"
